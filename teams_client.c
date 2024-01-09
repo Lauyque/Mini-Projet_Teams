@@ -33,7 +33,7 @@ void send_msg(int pid, char *msg)
     {
         value = msg[count];
         count++;
-        printf("%i", value)
+        printf("%i", value);
     }
     putchar('\n');
 }
