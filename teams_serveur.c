@@ -9,6 +9,8 @@
 void    print_pid(void);
 void    print_msg(int signum);
 
+int binaire;
+
 // CODE
 int main()
 {
@@ -16,6 +18,7 @@ int main()
     printf("En attente de nouveaux messages");
 
     signal(SIGUSR1, print_msg);
+    signal(SIGUSR2, print_msg);
     while (1)
     {
         sleep(1);
@@ -27,7 +30,11 @@ int main()
 // AFFICHER LE CODE
 void    print_msg(int signum)
 {
-    printf("coucou : %i\n", signum);
+        if (signum = SIGUSR1)
+        {
+            
+        }   
+        printf("coucou : %i\n", signum);
 }
 
 
