@@ -30,7 +30,15 @@ void send_msg(int pid, char *msg)
     while (*msg != '\0') {
         // Traitement de chaque caractère
         for (int i = 7; i >= 0; i--) {
-            putchar((*msg & (1 << i)) ? '1' : '0');
+            // Bits 1
+            if(*msg & (1 << i))
+            {
+                kill(pid, SIGUSR2)
+            }
+            else
+            {
+                kill(pid, SIGUSR1)
+            }
         }
         putchar(' '); // Espace entre les caractères pour la lisibilité
         msg++;
