@@ -15,22 +15,24 @@ int main(int argc, char *argv[])
     if (argc == 3)
     {
         int pid = atoi(argv[1]);
-        char msg = argv[2];
+        char *msg = argv[2];
         send_msg(pid,msg);
     }
     else
     {
-        printf("Veillez mettre en paramettre le pid du serveur et le message !!")
+        printf("Veillez mettre en paramettre le pid du serveur et le message !!");
         return 1;
     }
 }
 
-void send_msg(int pid, char msg)
+void send_msg(int pid, char *msg)
 {
     int value;
-    int count;
-    while (*msg[count] != '\0')
+    int count = 0;
+    while (msg[count] != '\0')
     {
-        value = *msg[count];
+        value = msg[count];
+        count++;
+        printf("%i", value)
     }
 }
