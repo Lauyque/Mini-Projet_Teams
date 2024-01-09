@@ -12,6 +12,7 @@ void    print_msg(int signum);
 // CODE
 int main()
 {
+    print_pid();
     signal(SIGINT, print_msg);
     while (1)
     {
