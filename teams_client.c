@@ -6,11 +6,21 @@
 
 
 // PROTOTYPES
-
+void    send_msg(int pid, char msg);
 
 
 // CODE
-int main()
+int main(int argc, char *argv[])
 {
-    return 0;
+    if (argc == 3)
+    {
+        int pid = atoi(argv[1]);
+        char msg = atoi(argv[2]);
+        send_msg(int pid,char msg);
+    }
+}
+
+void send_msg(int pid, char msg)
+{
+    printf("%d", *msg)
 }

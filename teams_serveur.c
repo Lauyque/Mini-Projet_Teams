@@ -13,7 +13,9 @@ void    print_msg(int signum);
 int main()
 {
     print_pid();
-    signal(SIGINT, print_msg);
+    printf("En attente de nouveaux messages");
+
+    signal(SIGUSR1, print_msg);
     while (1)
     {
         sleep(1);
