@@ -6,7 +6,7 @@
 
 // PROTOTYPES
 void    print_pid(void);
-void    print_msg(int signum)
+void    print_msg(int signum);
 
 // CODE
 int main()
