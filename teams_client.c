@@ -15,12 +15,17 @@ int main(int argc, char *argv[])
     if (argc == 3)
     {
         int pid = atoi(argv[1]);
-        char msg = atoi(argv[2]);
-        send_msg(int pid,char msg);
+        char *msg = atoi(argv[2]);
+        send_msg(pid,msg);
     }
 }
 
 void send_msg(int pid, char msg)
 {
-    printf("%d", *msg)
+    int value;
+    int count;
+    while (msg[count] != '\0')
+    {
+        value = msg[count];
+    }
 }
