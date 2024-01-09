@@ -6,13 +6,26 @@
 
 // PROTOTYPES
 void    print_pid(void);
+void    print_msg(int signum)
 
 // CODE
 int main()
 {
-    signal(Tu_vas_goûter_a_ma_matraque)
+    signal(SIGINT, print_msg);
+    while (1)
+    {
+        sleep(1);
+    }
+    
     return 0;
 }
+
+// AFFICHER LE CODE
+void    print_msg(int signum)
+{
+    printf("coucou : %i\n", signum);
+}
+
 
 // Affichage du pid du serveu
 void    print_pid(void)
