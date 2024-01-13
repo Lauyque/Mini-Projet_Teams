@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
     }
     else
     {
-        printf("Veillez mettre en paramettre le pid du serveur et le message !!");
+        printf("Veillez mettre en paramettre le pid du serveur et le message !!\n");
         return 1;
     }
 }
