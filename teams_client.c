@@ -33,7 +33,7 @@ void send_msg(int pid, char *msg)
             printf("%X\n", *msg);
             // Bits 1
             int bit = (msg >> i) & 1;
-            if (bit == 0) {
+            if (bit == 0)
             {
                 kill(pid, SIGUSR2);
             }
