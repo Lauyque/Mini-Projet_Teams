@@ -15,7 +15,7 @@ int binaire = 0;
 int main()
 {
     print_pid();
-    printf("En attente de nouveaux messages");
+    printf("En attente de nouveaux messages\n");
 
     signal(SIGUSR1, print_msg);
     signal(SIGUSR2, print_msg);
@@ -30,24 +30,18 @@ int main()
 // AFFICHER LE CODE
 void    print_msg(int signum)
 {
-        int bit = 7;
-
-        if (signum = SIGUSR1)
+        if (signum == SIGUSR1)
         {
             binaire = (binaire << 1) | 0;
             printf("coucou : %i\n", binaire);
         }   
-        else if (signum = SIGUSR2)
+        else if (signum == SIGUSR2)
         {
             binaire = (binaire << 1) | 1;
             printf("pas coucou : %i\n", binaire);
         }
-        bit++;
-
-        if (bit = 8)
-        {
-            printf("%X ", binaire);
-        }
+        printf("%X\n", binaire);
+        putchar(binaire);
 }
 
 
