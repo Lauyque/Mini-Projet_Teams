@@ -46,10 +46,8 @@ void    print_msg(int signum)
 
     if (bits == 8)
     {
-        printf("Caractère reçu : %c\n", (char)binaire);
+        //printf("Caractère reçu : %c\n", (char)binaire);
         msg[taille++] = (char)binaire;
-        bits = 0;
-        binaire = 0;
 
         if (binaire == '\0')
         {
@@ -57,6 +55,8 @@ void    print_msg(int signum)
             memset(msg,0,sizeof(msg));
             taille = 0;
         }
+        bits = 0;
+        binaire = 0;
     }
 }
 

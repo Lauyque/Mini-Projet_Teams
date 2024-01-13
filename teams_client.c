@@ -17,9 +17,6 @@ int main(int argc, char *argv[])
         int pid = atoi(argv[1]);
         char *msg = argv[2];
         send_msg(pid,msg);
-        /* Fin de la communication */
-        char fin[] = "\0";
-        send_msg(pid,fin);
     }
     else
     {
@@ -47,4 +44,16 @@ void send_msg(int pid, char *msg)
         }
         msg++;
     }
-}
+    for (int i = 7; i >= 0; i--) {
+    // Bits 1
+    int bit = (*msg >> i) & 1;
+    if (bit == 0)
+    {
+        kill(pid, SIGUSR1);
+    }
+    else
+    {
+        kill(pid, SIGUSR2);
+    }
+    usleep(1000);
+}}
