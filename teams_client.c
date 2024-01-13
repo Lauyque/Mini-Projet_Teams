@@ -6,7 +6,7 @@
 
 
 // PROTOTYPES
-void    send_msg(int pid, char msg);
+void    send_msg(int pid, char *msg);
 
 
 // CODE
@@ -25,26 +25,23 @@ int main(int argc, char *argv[])
     }
 }
 
-void send_msg(int pid, char msg)
+void send_msg(int pid, char *msg)
 {
-    while (msg != '\0') {
+    while (*msg != '\0') {
         // Traitement de chaque caractère
         for (int i = 7; i >= 0; i--) {
-            printf("%X\n", msg);
             // Bits 1
-            int bit = (msg >> i) & 1;
+            int bit = (*msg >> i) & 1;
             if (bit == 0)
-            {
-                kill(pid, SIGUSR2);
-            }
-            else
             {
                 kill(pid, SIGUSR1);
             }
-            usleep(100000);
+            else
+            {
+                kill(pid, SIGUSR2);
+            }
+            usleep(1000);
         }
-        putchar(' '); // Espace entre les caractères pour la lisibilité
         msg++;
     }
-    putchar('\n');
 }
