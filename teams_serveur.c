@@ -35,12 +35,10 @@ void    print_msg(int signum)
     if (signum == SIGUSR1)
     {
         binaire = (binaire << 1) | 0;
-        printf("0\n");
     }   
     else if (signum == SIGUSR2)
     {
         binaire = (binaire << 1) | 1;
-        printf("1\n");
     }
     bits++;
 
