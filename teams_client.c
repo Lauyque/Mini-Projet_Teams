@@ -40,7 +40,7 @@ void send_msg(int pid, char *msg)
             {
                 kill(pid, SIGUSR1);
             }
-            usleep(10000);
+            usleep(100000);
         }
         putchar(' '); // Espace entre les caractères pour la lisibilité
         msg++;
