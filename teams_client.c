@@ -17,6 +17,9 @@ int main(int argc, char *argv[])
         int pid = atoi(argv[1]);
         char *msg = argv[2];
         send_msg(pid,msg);
+        /* Fin de la communication */
+        char *fin = '\0';
+        send_msg(pid,fin);
     }
     else
     {

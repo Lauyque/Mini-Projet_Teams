@@ -31,7 +31,8 @@ int main()
 void    print_msg(int signum)
 {
     static int bits = 0;
-    static char msg;
+    static char msg[] = {0};
+    static int taille = 0;
 
     if (signum == SIGUSR1)
     {
@@ -46,8 +47,8 @@ void    print_msg(int signum)
     if (bits == 8)
     {
         printf("Caractère reçu : %c\n", (char)binaire);
-        msg = (char)msg + (char)binaire;
-        printf("%c\n", (char)msg);
+        msg[taille++] = (char)binaire;
+        printf("Message : %s\n", msg);
         bits = 0;
         binaire = 0;
     }
