@@ -6,7 +6,7 @@
 
 
 // PROTOTYPES
-void    send_msg(int pid, char *msg);
+void    send_msg(int pid, char msg);
 
 
 // CODE
