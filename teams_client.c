@@ -33,11 +33,11 @@ void send_msg(int pid, char *msg)
             // Bits 1
             if(*msg & (1 << i))
             {
-                kill(pid, SIGUSR2)
+                kill(pid, SIGUSR2);
             }
             else
             {
-                kill(pid, SIGUSR1)
+                kill(pid, SIGUSR1);
             }
             usleep(100000);
         }
