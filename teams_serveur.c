@@ -9,7 +9,7 @@
 void    print_pid(void);
 void    print_msg(int signum);
 
-int binaire;
+int binaire = 0;
 
 // CODE
 int main()
@@ -30,24 +30,23 @@ int main()
 // AFFICHER LE CODE
 void    print_msg(int signum)
 {
-        int octet = 0;
         int bit = 7;
 
         if (signum = SIGUSR1)
         {
-            octet = (octet << 1) | 0;
-            printf("coucou : %i\n", octet);
+            binaire = (binaire << 1) | 0;
+            printf("coucou : %i\n", binaire);
         }   
         else if (signum = SIGUSR2)
         {
-            octet = (octet << 1) | 1;
-            printf("pas coucou : %i\n", octet);
+            binaire = (binaire << 1) | 1;
+            printf("pas coucou : %i\n", binaire);
         }
         bit++;
 
-        if (bit == 8)
+        if (bit = 8)
         {
-            printf("%X ", octet);
+            printf("%X ", binaire);
         }
 }
 
