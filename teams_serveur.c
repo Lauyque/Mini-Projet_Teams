@@ -30,18 +30,26 @@ int main()
 // AFFICHER LE CODE
 void    print_msg(int signum)
 {
-        if (signum == SIGUSR1)
-        {
-            binaire = (binaire << 1) | 0;
-            printf("coucou : %i\n", binaire);
-        }   
-        else if (signum == SIGUSR2)
-        {
-            binaire = (binaire << 1) | 1;
-            printf("pas coucou : %i\n", binaire);
-        }
-        printf("%X\n", binaire);
-        putchar(binaire);
+    static int bits = 0;
+
+    if (signum == SIGUSR1)
+    {
+        binaire = (binaire << 1) | 0;
+        printf("0\n");
+    }   
+    else if (signum == SIGUSR2)
+    {
+        binaire = (binaire << 1) | 1;
+        printf("1\n");
+    }
+    bits++;
+
+    if (bits == 8)
+    {
+        printf("Caractère reçu : %c\n", (char)binaire);
+        bits = 0;
+        binaire = 0;
+    }
 }
 
 
