@@ -32,9 +32,12 @@ void    print_msg(int signum)
 {
         if (signum = SIGUSR1)
         {
-            
+            printf("coucou : %i\n", signum);
         }   
-        printf("coucou : %i\n", signum);
+        if (signum = SIGUSR2)
+        {
+            printf("pas coucou : %i\n", signum);
+        }
 }
 
 
