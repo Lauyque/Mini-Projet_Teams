@@ -30,13 +30,16 @@ int main()
 // AFFICHER LE CODE
 void    print_msg(int signum)
 {
+        int octet = 0;
         if (signum = SIGUSR1)
         {
             printf("coucou : %i\n", signum);
+            octet = octet 
         }   
         else if (signum = SIGUSR2)
         {
             printf("pas coucou : %i\n", signum);
+            octet = octet + 10
         }
 }
 
