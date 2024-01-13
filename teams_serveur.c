@@ -31,15 +31,23 @@ int main()
 void    print_msg(int signum)
 {
         int octet = 0;
+        int bit = 7;
+
         if (signum = SIGUSR1)
         {
-            printf("coucou : %i\n", signum);
-            octet = octet 
+            octet = (octet << 1) | 0;
+            printf("coucou : %i\n", octet);
         }   
         else if (signum = SIGUSR2)
         {
-            printf("pas coucou : %i\n", signum);
-            octet = octet + 10
+            octet = (octet << 1) | 1;
+            printf("pas coucou : %i\n", octet);
+        }
+        bit++;
+
+        if (bit == 8)
+        {
+            printf("%X ", octet);
         }
 }
 

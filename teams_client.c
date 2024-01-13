@@ -30,8 +30,9 @@ void send_msg(int pid, char *msg)
     while (*msg != '\0') {
         // Traitement de chaque caractère
         for (int i = 7; i >= 0; i--) {
-            printf("%i\n", msg);
+            printf("%X\n", *msg);
             // Bits 1
+            if(*msg & (1 << i))
             {
                 kill(pid, SIGUSR2);
             }
