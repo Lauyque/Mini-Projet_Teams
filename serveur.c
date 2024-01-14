@@ -52,6 +52,16 @@ void    print_msg(int signum)
         if (binaire == '\0')
         {
             printf("Message : %s\n", msg);
+
+            // Écrire dans le fichier de log
+            FILE *log_file = fopen("conversations.log", "a");
+            if (log_file != NULL) {
+                fprintf(log_file, "%s\n", msg);
+                fclose(log_file);
+            } else {
+                perror("Erreur lors de l'ouverture du fichier de log");
+            }
+
             memset(msg,0,sizeof(msg));
             taille = 0;
         }
