@@ -35,7 +35,7 @@ int main()
 // AFFICHER LE CODE
 void    print_msg(int signum)
 {
-    // création variable static sinon entre chaque appell on perdrait le bit reçu avant et donc pas possible de formet 8 bits pour charactère et donc pas possible de former un msg, même logique pour les deux autres
+    // création variable static sinon entre chaque appel on perdrait le bit reçu avant et donc pas possible de former 8 bits pour charactère et donc pas possible de former un msg, même logique pour les deux autres
     static int bits = 0;
     static char msg[] = {0};
     static int taille = 0;
