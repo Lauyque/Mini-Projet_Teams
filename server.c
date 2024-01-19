@@ -74,10 +74,12 @@ void    print_msg(int signum)
                 // Supprimer le saut de ligne à la fin de la chaîne de temps
                 char *time_str = ctime(&now);
                 time_str[strcspn(time_str, "\n")] = '\0';
-
+                // ajout du message et de la date dans le fichier de log
                 fprintf(log_file, "[%s] %s\n",time_str, msg);
                 fclose(log_file);
-            } else {
+            } 
+            // S'il y a une erreur dans l'ouverture du fichier de log, un message d'erreur est fournit
+            else {
                 perror("Erreur lors de l'ouverture du fichier de log");
             }
 
