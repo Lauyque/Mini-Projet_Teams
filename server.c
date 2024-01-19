@@ -3,6 +3,7 @@
 #include <string.h>
 #include <signal.h>
 #include <unistd.h>
+#include <time.h>
 
 
 // PROTOTYPES
@@ -66,7 +67,12 @@ void    print_msg(int signum)
             // Écrire dans le fichier de log
             FILE *log_file = fopen("conversations.log", "a");
             if (log_file != NULL) {
-                fprintf(log_file, "%s\n", msg);
+
+                // Enregistrement de l'horaire
+                time_t now;
+                time(&now);
+
+                fprintf(log_file, "[%s] %s\n",ctime(&now), msg);
                 fclose(log_file);
             } else {
                 perror("Erreur lors de l'ouverture du fichier de log");
