@@ -14,11 +14,16 @@ int binaire = 0;
 // CODE
 int main()
 {
+    // affichage du pid du processus
     print_pid();
+    // affichage qu'on attend un message du client
     printf("En attente de nouveaux messages\n");
 
+    // en attente des signaux du client
     signal(SIGUSR1, print_msg);
     signal(SIGUSR2, print_msg);
+
+    // boucle parce que sinon le serveur ne fait rien et nous on veut constamment vérifier si on recoit un signal 
     while (1)
     {
         sleep(1);
@@ -30,10 +35,13 @@ int main()
 // AFFICHER LE CODE
 void    print_msg(int signum)
 {
+    // création variable static sinon entre chaque appel on perdrait le bit reçu avant et donc pas possible de former 8 bits pour charactère et donc pas possible de former un msg, même logique pour les deux autres
     static int bits = 0;
     static char msg[] = {0};
     static int taille = 0;
 
+    // si on a un sigurs1 on décale à gauche et on ajoute 0 pour confirmer que le message a bien été décalé (sinon on ne pourrait pas dire qu'on a bien reçu un 0 et on pourrait croire que rien n'a été traité)
+    // si on a un surgurs2 on ajoute 1 à la valeur 
     if (signum == SIGUSR1)
     {
         binaire = (binaire << 1) | 0;
@@ -44,6 +52,8 @@ void    print_msg(int signum)
     }
     bits++;
 
+    // si on a 8 bits on a un charactère alors on le fou dans message pour commencer ou continuer celui-ci
+    // si on a le charactère nul alors on affiche le message complet puis on créer le fichier de log si il n'existe pas ou alors on le met dedans si il existe déjà  (grâce à "a" dans fopen)
     if (bits == 8)
     {
         //printf("Caractère reçu : %c\n", (char)binaire);
@@ -71,7 +81,7 @@ void    print_msg(int signum)
 }
 
 
-// Affichage du pid du serveu
+// Affichage du pid du serveur
 void    print_pid(void)
 {
     int pid;
