@@ -71,6 +71,8 @@ void    print_msg(int signum)
                 // Enregistrement de l'horaire
                 time_t now;
                 time(&now);
+                // Supprimer le saut de ligne à la fin de la chaîne de temps
+                time_str[strcspn(time_str, "\n")] = '\0';
 
                 fprintf(log_file, "[%s] %s\n",ctime(&now), msg);
                 fclose(log_file);
