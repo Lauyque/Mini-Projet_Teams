@@ -43,7 +43,7 @@ void send_msg(int pid, char *msg)
             {
                 kill(pid, SIGUSR2); // Envoye du signal SIGUSR2 qui est égal au bit 1
             }
-            usleep(1000); // temps de pause pour laisser le temps au serveur de recevoir le bit
+            usleep(700); // temps de pause pour laisser le temps au serveur de recevoir le bit
         }
         msg++; // changement de caractère
     } 
