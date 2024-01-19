@@ -68,13 +68,14 @@ void    print_msg(int signum)
             FILE *log_file = fopen("conversations.log", "a");
             if (log_file != NULL) {
 
-                // Enregistrement de l'horaire
+                // Enregistrement de de l'heure et la date
                 time_t now;
                 time(&now);
                 // Supprimer le saut de ligne à la fin de la chaîne de temps
+                char *time_str = ctime(&now);
                 time_str[strcspn(time_str, "\n")] = '\0';
 
-                fprintf(log_file, "[%s] %s\n",ctime(&now), msg);
+                fprintf(log_file, "[%s] %s\n",time_str, msg);
                 fclose(log_file);
             } else {
                 perror("Erreur lors de l'ouverture du fichier de log");
